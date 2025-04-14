@@ -1,0 +1,630 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JJ's Pizza - Our Menu</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Typography */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f1faee;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: #1A1F2C;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            padding-top: 2rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            color: #e63946;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #e63946;
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: #1d3557;
+        }
+        
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-circle {
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: #e63946;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .nav-links a:hover {
+            color: #e63946;
+        }
+        
+        .order-btn {
+            background-color: #e63946;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .order-btn:hover {
+            background-color: #c1121f;
+            color: white;
+        }
+        
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+        }
+        
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background-color: white;
+            padding: 1rem;
+            gap: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Menu Section */
+        .menu-section {
+            padding: 2rem 0 4rem;
+        }
+        
+        .menu-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .menu-item {
+            background-color: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(230, 57, 70, 0.2);
+        }
+        
+        .menu-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .menu-content {
+            padding: 1.5rem;
+        }
+        
+        .menu-content h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .menu-price {
+            color: #e63946;
+            font-weight: bold;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .menu-description {
+            color: #555;
+            margin-bottom: 1rem;
+        }
+        
+        .menu-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        
+        .tag {
+            background-color: #f1faee;
+            color: #1d3557;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .tag.vegetarian {
+            background-color: #8ecca3;
+            color: white;
+        }
+        
+        .tag.spicy {
+            background-color: #ff7e67;
+            color: white;
+        }
+        
+        .tag.popular {
+            background-color: #e63946;
+            color: white;
+        }
+        
+        .order-now-btn {
+            width: 100%;
+            background-color: #1d3557;
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .order-now-btn:hover {
+            background-color: #2a4a73;
+        }
+        
+        /* Custom pizza section */
+        .custom-pizza {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .custom-pizza h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .custom-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .option-group {
+            border: 1px solid #ddd;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+        }
+        
+        .option-group h3 {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .option {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .option:last-child {
+            border-bottom: none;
+        }
+        
+        .custom-pizza-btn {
+            display: block;
+            margin: 2rem auto 0;
+            background-color: #e63946;
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .custom-pizza-btn:hover {
+            background-color: #c1121f;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1A1F2C;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-logo {
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: #fff;
+            font-size: 1.25rem;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+        }
+        
+        .footer-links a:hover {
+            color: #e63946;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #333;
+            padding-top: 1rem;
+            color: #999;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links, .order-btn {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .mobile-menu.active {
+                display: flex;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .custom-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <div class="logo-circle">JJ</div>
+                    <span style="font-size: 1.5rem; font-weight: bold;">JJ's <span style="color: #e63946;">Pizza</span></span>
+                </div>
+                
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="menu.html" class="active">Menu</a>
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                
+                <button class="order-btn">Order Now</button>
+                
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact">Contact</a>
+                <button class="order-btn">Order Now</button>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <h1>Our Pizza Menu</h1>
+        
+        <section class="menu-section container">
+            <div class="menu-intro">
+                <h2>Handcrafted Pizzas</h2>
+                <p>All of our pizzas are made with love using only the freshest ingredients and our special homemade sauce. Choose from our signature creations or build your own masterpiece!</p>
+            </div>
+            
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="/lovable-uploads/b6e91b5d-5850-4581-acec-68bf07fb73cc.png" alt="Classic Cheese Pizza" class="menu-img">
+                    <div class="menu-content">
+                        <h3>Classic Cheese</h3>
+                        <div class="menu-price">$8.99</div>
+                        <p class="menu-description">Our signature pizza with a perfect blend of mozzarella and parmesan on our house-made tomato sauce.</p>
+                        <div class="menu-tags">
+                            <span class="tag vegetarian">Vegetarian</span>
+                            <span class="tag popular">Popular</span>
+                        </div>
+                        <button class="order-now-btn">Order Now</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <img src="/lovable-uploads/1daa0d5e-fe73-4b91-9747-bc36597c0eeb.png" alt="Spicy Meat Pizza" class="menu-img">
+                    <div class="menu-content">
+                        <h3>Meat Lover's Dream</h3>
+                        <div class="menu-price">$12.99</div>
+                        <p class="menu-description">Loaded with pepperoni, ground beef, and Italian sausage for the ultimate carnivore experience.</p>
+                        <div class="menu-tags">
+                            <span class="tag spicy">Spicy</span>
+                            <span class="tag popular">Popular</span>
+                        </div>
+                        <button class="order-now-btn">Order Now</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <img src="/lovable-uploads/412fe7f3-ae8f-4ecc-997b-cab8dad15ffd.png" alt="Mushroom Pizza" class="menu-img">
+                    <div class="menu-content">
+                        <h3>Mushroom Supreme</h3>
+                        <div class="menu-price">$11.99</div>
+                        <p class="menu-description">A vegetarian delight with three types of mushrooms, green peppers and onions on our garlic-infused sauce.</p>
+                        <div class="menu-tags">
+                            <span class="tag vegetarian">Vegetarian</span>
+                        </div>
+                        <button class="order-now-btn">Order Now</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <img src="/lovable-uploads/3f5a999c-943a-43e2-89e0-77af37e440d2.png" alt="Pepperoni Pizza" class="menu-img">
+                    <div class="menu-content">
+                        <h3>Classic Pepperoni</h3>
+                        <div class="menu-price">$9.99</div>
+                        <p class="menu-description">America's favorite! Our classic cheese pizza topped with generous portions of pepperoni.</p>
+                        <div class="menu-tags">
+                            <span class="tag popular">Best Seller</span>
+                        </div>
+                        <button class="order-now-btn">Order Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="custom-pizza">
+                <h2>Build Your Own Pizza</h2>
+                
+                <div class="custom-options">
+                    <div class="option-group">
+                        <h3>1. Choose your size</h3>
+                        <div class="option">
+                            <span>Small (10")</span>
+                            <span>$8.99</span>
+                        </div>
+                        <div class="option">
+                            <span>Medium (12")</span>
+                            <span>$10.99</span>
+                        </div>
+                        <div class="option">
+                            <span>Large (14")</span>
+                            <span>$12.99</span>
+                        </div>
+                        <div class="option">
+                            <span>Extra Large (16")</span>
+                            <span>$14.99</span>
+                        </div>
+                    </div>
+                    
+                    <div class="option-group">
+                        <h3>2. Choose your toppings</h3>
+                        <div class="option">
+                            <span>Pepperoni</span>
+                            <span>$1.50</span>
+                        </div>
+                        <div class="option">
+                            <span>Italian Sausage</span>
+                            <span>$1.50</span>
+                        </div>
+                        <div class="option">
+                            <span>Mushrooms</span>
+                            <span>$1.00</span>
+                        </div>
+                        <div class="option">
+                            <span>Green Peppers</span>
+                            <span>$1.00</span>
+                        </div>
+                        <div class="option">
+                            <span>Onions</span>
+                            <span>$1.00</span>
+                        </div>
+                        <div class="option">
+                            <span>Extra Cheese</span>
+                            <span>$1.50</span>
+                        </div>
+                    </div>
+                    
+                    <div class="option-group">
+                        <h3>3. Choose your crust</h3>
+                        <div class="option">
+                            <span>Thin Crust</span>
+                            <span>Included</span>
+                        </div>
+                        <div class="option">
+                            <span>Regular Crust</span>
+                            <span>Included</span>
+                        </div>
+                        <div class="option">
+                            <span>Thick Crust</span>
+                            <span>+$1.00</span>
+                        </div>
+                        <div class="option">
+                            <span>Cheese-Stuffed Crust</span>
+                            <span>+$2.50</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="custom-pizza-btn">Create Your Pizza</button>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="width: 2rem; height: 2rem; background-color: #e63946; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">JJ</div>
+                            <span style="font-size: 1.5rem; font-weight: bold; color: white;">JJ's <span style="color: #e63946;">Pizza</span></span>
+                        </div>
+                    </div>
+                    <p>The best pizza in town, delivered fresh to your door! We pride ourselves on quality ingredients and exceptional service.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Opening Hours</h3>
+                    <ul class="footer-links">
+                        <li>Monday - Friday: 11:00 AM - 10:00 PM</li>
+                        <li>Saturday - Sunday: 12:00 PM - 11:00 PM</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for special deals and offers</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your email" style="padding: 0.5rem; border: none; border-radius: 0.25rem 0 0 0.25rem; width: 70%;">
+                        <button style="background-color: #e63946; color: white; border: none; padding: 0.5rem; border-radius: 0 0.25rem 0.25rem 0; cursor: pointer;">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 JJ's Pizza | All rights reserved | Address: 123 Pizza Lane, Flavor Town | Phone: (123) 456-7890</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

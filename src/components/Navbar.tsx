@@ -26,6 +26,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-8">
           <Link to="/" className="font-medium hover:text-pizza-red transition-colors">Home</Link>
           <Link to="/menu" className="font-medium hover:text-pizza-red transition-colors">Menu</Link>
+          <a href="/menu.html" className="font-medium hover:text-pizza-red transition-colors">HTML Menu</a>
           <a href="#about" className="font-medium hover:text-pizza-red transition-colors">About</a>
           <a href="#contact" className="font-medium hover:text-pizza-red transition-colors">Contact</a>
           <Button className="bg-pizza-red hover:bg-pizza-sauce text-white rounded-full px-6">
@@ -47,6 +48,7 @@ const Navbar = () => {
           <div className="flex flex-col space-y-4">
             <Link to="/" className="font-medium hover:text-pizza-red transition-colors" onClick={toggleMenu}>Home</Link>
             <Link to="/menu" className="font-medium hover:text-pizza-red transition-colors" onClick={toggleMenu}>Menu</Link>
+            <a href="/menu.html" className="font-medium hover:text-pizza-red transition-colors" onClick={toggleMenu}>HTML Menu</a>
             <a href="#about" className="font-medium hover:text-pizza-red transition-colors" onClick={toggleMenu}>About</a>
             <a href="#contact" className="font-medium hover:text-pizza-red transition-colors" onClick={toggleMenu}>Contact</a>
             <Button className="bg-pizza-red hover:bg-pizza-sauce text-white w-full">
